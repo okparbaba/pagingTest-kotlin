@@ -1,6 +1,6 @@
 package com.softwarefactory.pagingtest.utils.pagination.factory
 
-import android.arch.paging.DataSource
+import androidx.paging.DataSource
 import com.softwarefactory.pagingtest.domain.models.Repos
 import com.softwarefactory.pagingtest.utils.pagination.datasource.ReposDataSource
 import com.softwarefactory.pagingtest.utils.pagination.datasource._base.OnDataSourceLoading

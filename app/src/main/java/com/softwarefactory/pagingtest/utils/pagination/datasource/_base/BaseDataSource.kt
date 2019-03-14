@@ -1,6 +1,6 @@
 package com.softwarefactory.pagingtest.utils.pagination.datasource._base
 
-import android.arch.paging.PageKeyedDataSource;
+import androidx.paging.PageKeyedDataSource;
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 

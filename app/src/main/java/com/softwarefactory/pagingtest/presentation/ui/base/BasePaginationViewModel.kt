@@ -1,10 +1,10 @@
 package com.softwarefactory.pagingtest.presentation.ui.base
 
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
-import android.arch.paging.DataSource
-import android.arch.paging.PagedList
-import android.arch.paging.RxPagedListBuilder
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.paging.DataSource
+import androidx.paging.PagedList
+import androidx.paging.RxPagedListBuilder
 import com.softwarefactory.pagingtest.presentation.utils.Event
 import com.softwarefactory.pagingtest.utils.pagination.datasource._base.OnDataSourceLoading
 import io.reactivex.Observable

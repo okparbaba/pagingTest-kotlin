@@ -1,8 +1,8 @@
 package com.softwarefactory.pagingtest.presentation.ui.base
 
-import android.arch.paging.PagedListAdapter
-import android.support.v7.util.DiffUtil
-import android.support.v7.widget.RecyclerView
+import androidx.paging.PagedListAdapter
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 
 // Since we will have two views, we need to specify a view type for each

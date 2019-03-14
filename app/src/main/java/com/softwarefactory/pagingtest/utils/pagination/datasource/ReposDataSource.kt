@@ -7,6 +7,7 @@ import com.softwarefactory.pagingtest.utils.pagination.datasource._base.BaseData
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
+
 /**
  * Class that handles how to retrieve data for the recyclerview
  * @see BaseDataSource

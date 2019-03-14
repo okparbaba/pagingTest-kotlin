@@ -14,7 +14,7 @@ class ReposDataSourceFactory(var loading: OnDataSourceLoading,
 
     override fun create(): DataSource<Int, Repos>? {
         // invalidate the previous data source, if available
-        if (::source.isInitialized && source != null) source.invalidate()
+        if (::source.isInitialized) source.invalidate()
         // if we have a user, then create a data source
         if (user != null) {
             source = ReposDataSource(user!!)

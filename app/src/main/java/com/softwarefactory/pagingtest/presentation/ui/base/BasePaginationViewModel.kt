@@ -1,6 +1,5 @@
 package com.softwarefactory.pagingtest.presentation.ui.base
 
-import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.arch.paging.DataSource
@@ -12,19 +11,11 @@ import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
-/**
- * Base ViewModel class with observables and helper methods needed to use in the Pagination Library
- */
-public abstract class BasePaginationViewModel<T : DataSource.Factory<Int, K>, K> : ViewModel() {
+abstract class BasePaginationViewModel<T : DataSource.Factory<Int, K>, K> : ViewModel() {
     private var compositeDisposable : CompositeDisposable = CompositeDisposable()
     protected lateinit var dataSourceFactory : T
     private var pagedObservable: Observable<PagedList<K>>? = null
-    /**
-     * Events exposed so that the Activity/Fragment can get data from the ViewModel regarding the [BaseDataSource] actions
-     * [clearDataEvents] acts as an "event", rather than state. [Observer]s
-     * are notified of the change as usual with [LiveData], but only one [Observer]
-     * will actually read the data. For more information, check the [Event] class.
-     */
+
     val clearDataEvents : MutableLiveData<Event<Unit>> get() = _clearDataEvents
     private val _clearDataEvents = MutableLiveData<Event<Unit>>()
 
@@ -37,10 +28,6 @@ public abstract class BasePaginationViewModel<T : DataSource.Factory<Int, K>, K>
     val errorToastEvent : MutableLiveData<Event<Unit>> get() = _errorToastEvent
     private val _errorToastEvent = MutableLiveData<Event<Unit>>()
 
-    /**
-     * This stipulates how many items are going to be fetched each time the user scrolls to the end of the recyclerview
-     * Please note that initially 3 x [getPageSize] items are going to be loaded
-     */
     abstract fun getPageSize() : Int
 
     //region Pagination
@@ -48,10 +35,6 @@ public abstract class BasePaginationViewModel<T : DataSource.Factory<Int, K>, K>
         this.clearDataEvents.postValue(Event(Unit))
     }
 
-    /**
-     * Generates a new datasource,
-     * Used when we need to do a new search for a different user
-     */
     fun clearDataSource() {
         dataSourceFactory.create()
         createPagedObservable()
@@ -67,7 +50,7 @@ public abstract class BasePaginationViewModel<T : DataSource.Factory<Int, K>, K>
     /**
      * Creates observable stream for the data fetched by the DataSource
      */
-    fun createPagedObservable() {
+    private fun createPagedObservable() {
         pagedObservable = RxPagedListBuilder(
                 dataSourceFactory,
                 PagedList.Config.Builder()

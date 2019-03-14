@@ -10,7 +10,5 @@ data class ReposDto(
         @SerializedName("stargazers_count") var startCount : Int?,
         @SerializedName("watchers_count") var watchersCount : Int?
 ) {
-    // necessary for Mapstruct
-    // check: https://github.com/mapstruct/mapstruct-examples/tree/master/mapstruct-kotlin
     constructor() : this(null, null, null, null, null, null)
 }

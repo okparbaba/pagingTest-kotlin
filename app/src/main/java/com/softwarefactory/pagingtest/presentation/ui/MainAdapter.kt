@@ -32,16 +32,16 @@ class MainAdapter(var listener : ItemClickListener) : BaseDiffAdapter<Repos, Rec
             viewHolder.watchersTextView.text = repos?.watchersCount.toString()
             viewHolder.languageTextView.text = repos?.language
             viewHolder.starsTextView.text = repos?.startCount.toString()
-            viewHolder.itemView.setOnClickListener({ v -> listener.onItemClicked(repos!!) })
+            viewHolder.itemView.setOnClickListener { listener.onItemClicked(repos!!) }
         }
     }
 
     class MainViewHolder(view : View) : RecyclerView.ViewHolder(view) {
-        val titleTextView = view.list_item_title_textView
-        val descriptionTextView = view.list_item_description_textView
-        val watchersTextView = view.list_item_watchers_textView
-        val languageTextView = view.list_item_language_textView
-        val starsTextView = view.list_item_stars_textView
+        val titleTextView = view.list_item_title_textView!!
+        val descriptionTextView = view.list_item_description_textView!!
+        val watchersTextView = view.list_item_watchers_textView!!
+        val languageTextView = view.list_item_language_textView!!
+        val starsTextView = view.list_item_stars_textView!!
     }
 
 }

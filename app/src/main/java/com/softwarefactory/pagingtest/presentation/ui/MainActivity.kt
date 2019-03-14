@@ -1,5 +1,6 @@
 package com.softwarefactory.pagingtest.presentation.ui
 
+import android.annotation.SuppressLint
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -107,6 +108,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     // Submits the list (with the pagination) to the adapter
+    @SuppressLint("CheckResult")
     fun submitItems() {
         viewModel.getItems()!!
                 .subscribe(

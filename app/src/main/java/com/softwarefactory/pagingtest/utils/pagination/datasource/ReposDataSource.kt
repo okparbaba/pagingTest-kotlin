@@ -7,13 +7,8 @@ import com.softwarefactory.pagingtest.utils.pagination.datasource._base.BaseData
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
-
-/**
- * Class that handles how to retrieve data for the recyclerview
- * @see BaseDataSource
- */
 class ReposDataSource(var user : String) : BaseDataSource<Repos>() {
-    val manager : ReposManager = ReposManager()
+    private val manager : ReposManager = ReposManager()
 
     @SuppressLint("CheckResult")
     override fun loadInitialData(params: LoadInitialParams<Int>, callback: LoadInitialCallback<Int, Repos>) {

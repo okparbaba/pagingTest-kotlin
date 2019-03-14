@@ -4,11 +4,6 @@ import android.arch.paging.PageKeyedDataSource;
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
-/**
- * Class that handles how the recyclerview will retrieve data when:
- * @see loadInitial - The recyclerview and adapter are initialized OR when recreating the DataSource
- * @see loadAfter - The user scrolls to retrieve more data
- */
 abstract class BaseDataSource<T> : PageKeyedDataSource<Int, T>() {
     lateinit var onDataSourceLoading: OnDataSourceLoading
 
@@ -17,10 +12,6 @@ abstract class BaseDataSource<T> : PageKeyedDataSource<Int, T>() {
     protected abstract fun loadInitialData(params: LoadInitialParams<Int>, callback: LoadInitialCallback<Int, T>)
     protected abstract fun loadAditionalData(params: LoadParams<Int>, callback: LoadCallback<Int, T>)
 
-    /**
-     * Initial data loaded by the recyclerview,
-     * When started, it will load 3 times the number of items "per_page"
-     */
     override fun loadInitial(params: LoadInitialParams<Int>, callback: LoadInitialCallback<Int, T>) {
         onDataSourceLoading.onFirstFetch()
         loadInitialData(params, callback)
@@ -30,19 +21,11 @@ abstract class BaseDataSource<T> : PageKeyedDataSource<Int, T>() {
         // since we are keeping data in memory, we will not need to load the data before it.
     }
 
-    /**
-     * All the data that is fetched when the user scrolls
-     */
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, T>) {
         onDataSourceLoading.onDataLoading()
         loadAditionalData(params, callback)
     }
 
-
-    //region Helpers
-    /**
-     * These helper methods will abstract how we handle data and call the necessary methods on the listener
-     */
     protected fun submitInitialData(items: List<T>, params: LoadInitialParams<Int>, callback: LoadInitialCallback<Int, T>) {
         callback.onResult(items, 0, params.requestedLoadSize)
         if (!items.isEmpty()) {

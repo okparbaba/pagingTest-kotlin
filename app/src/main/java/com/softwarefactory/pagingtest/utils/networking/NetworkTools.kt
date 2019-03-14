@@ -1,6 +1,5 @@
 package com.softwarefactory.pagingtest.utils.networking
 
-import com.google.gson.Gson
 import com.softwarefactory.pagingtest.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -10,9 +9,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object NetworkTools {
     val retrofit : Retrofit
-    val gson = Gson()
+
     init {
-        var okhttpClient = OkHttpClient.Builder()
+        val okhttpClient = OkHttpClient.Builder()
                 .addInterceptor(
                         HttpLoggingInterceptor()
                                 .setLevel(

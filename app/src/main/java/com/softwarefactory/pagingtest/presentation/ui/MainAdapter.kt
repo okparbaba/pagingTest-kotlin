@@ -25,8 +25,8 @@ class MainAdapter(var listener : ItemClickListener) : BaseDiffAdapter<Repos, Rec
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (getItemViewType(position) == VIEW_TYPE_NORMAL) {
-            var repos = getItem(position)
-            var viewHolder = holder as MainViewHolder
+            val repos = getItem(position)
+            val viewHolder = holder as MainViewHolder
             viewHolder.titleTextView.text = repos?.name
             viewHolder.descriptionTextView.text = repos?.description
             viewHolder.watchersTextView.text = repos?.watchersCount.toString()
